@@ -1,0 +1,12 @@
+.button-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  opacity: 1;
+  transition: 250ms;
+  justify-content: center;
+}
+
+.button-grid.fade-out {
+  opacity: 0;
+}
