@@ -1,0 +1,7 @@
+.bg-color-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+}

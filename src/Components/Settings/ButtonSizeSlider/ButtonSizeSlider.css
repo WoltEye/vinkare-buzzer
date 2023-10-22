@@ -1,0 +1,12 @@
+.button-size-slider {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  align-items: center;
+  position: relative;
+}
+
+.button-size-slider .value-label {
+  position: absolute;
+  right: -2rem;
+}

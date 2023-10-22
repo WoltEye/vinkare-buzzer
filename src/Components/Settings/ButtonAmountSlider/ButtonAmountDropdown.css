@@ -1,0 +1,19 @@
+.button-amount-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+}
+
+#button-amount {
+  border-radius: 15px;
+  padding: .2rem;
+  border: 2px solid whitesmoke;
+  transition: 250ms all;
+  font-weight: bold;
+}
+
+#button-amount:hover { 
+  cursor: pointer;  
+}

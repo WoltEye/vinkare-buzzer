@@ -1,0 +1,19 @@
+.key-selector-button {
+  width: 5rem;
+  height: 2rem;
+  overflow: hidden;
+  font-size: .7rem;
+  font-weight: bold;
+  border: 2px solid whitesmoke;
+  background: none;
+  color: whitesmoke;
+  border-radius: 15px;
+  transition: 250ms all;
+  margin-top: .5rem;
+}
+
+.key-selector-button:hover {
+  background: whitesmoke;
+  color: black;
+  cursor: pointer;
+}

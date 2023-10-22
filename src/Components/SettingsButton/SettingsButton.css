@@ -1,0 +1,32 @@
+.home-button {
+  border-radius: 10px;
+  transition: 250ms all;
+  opacity: 1;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-button svg {
+  padding: .4rem;
+  position: relative;
+  left: .05rem;
+}
+
+.home-button svg * {
+  transition: 250ms all;
+  opacity: .5;
+}
+
+.home-button:hover {
+  cursor: pointer;
+}
+
+.home-button:hover svg * {
+  opacity: 1;
+}

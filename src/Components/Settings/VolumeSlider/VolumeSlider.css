@@ -1,0 +1,35 @@
+.volume-slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+  position: relative;
+}
+
+.volume-slider .volume-label, .volume-slider button {
+  position: absolute;
+}
+
+.volume-slider .volume-label {
+  right: -2.2rem;
+}
+
+.volume-slider button {
+  right: -14rem;
+  width: 11rem;
+  height: 2rem;
+  font-weight: bold;
+  font-size: .8rem;
+  border: 2px solid whitesmoke;
+  border-radius: 15px;
+  background: black;
+  color: whitesmoke;
+  transition: 250ms all;
+}
+
+.volume-slider button:hover {
+  background: whitesmoke;
+  color: black;
+  cursor: pointer;
+}

@@ -3,6 +3,7 @@
   flex-direction: row;
   gap: 0;
   opacity: 1;
+  flex-wrap: wrap;
   transition: 250ms;
   justify-content: center;
 }

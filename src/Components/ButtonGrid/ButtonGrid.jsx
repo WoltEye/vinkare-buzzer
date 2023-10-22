@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../Button/Button';
+import Button from './Button/Button';
 import './ButtonGrid.css';
 
-export default function ButtonGrid({ buttonAmount, onNameChange, gameStarted, setGameWinner, gameWinner, playAudio }) {
+export default function ButtonGrid({ buttonAmount, onNameChange, gap, gameStarted, setGameWinner, gameWinner, playAudio, setButtonNameStatus, bgColor, setKbButtonStatus, buttonSize, authorNameSize, textColor }) {
     const [ pressedKey, setPressedKey ] = useState(null);
     const [ hideGridItems, setHideGridItems ] = useState(false);
     
     let timeoutId;
+
+    const getSize = (num, size) => {
+      const distance = (size - 1 + 1) * num;
+      return distance;
+    }
 
     const renderButtons = () => {
         if(buttonAmount < 1) {
           console.error('Unexpected Error: buttonAmount is less than 1');
           return <></>
         }
-        
+
         const buttonArray = [];
         for(let i = 0; i < buttonAmount; i++) {
           buttonArray.push(
@@ -25,7 +30,15 @@ export default function ButtonGrid({ buttonAmount, onNameChange, gameStarted, se
           gameStarted={gameStarted}
           setGameWinner={setGameWinner}
           gameWinner={gameWinner}
+          setButtonNameStatus={setButtonNameStatus}
           playAudio={playAudio}
+          setKbButtonStatus={setKbButtonStatus}
+          buttonSize={buttonSize}
+          authorNameSize={authorNameSize}
+          gap={gap}
+          getSize={getSize}
+          textColor={textColor}
+          bgColor={bgColor}
           />
           );
         }
@@ -65,7 +78,9 @@ export default function ButtonGrid({ buttonAmount, onNameChange, gameStarted, se
       }, [gameWinner])
   return (
   <>
-    <div className={hideGridItems ? 'button-grid fade-out' : 'button-grid'}>
+    <div 
+    style={{gap: `${getSize(2, gap)}rem`}}
+    className={hideGridItems ? 'button-grid fade-out' : 'button-grid'}>
       { renderButtons() }
     </div>
   </>

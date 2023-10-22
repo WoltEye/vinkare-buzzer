@@ -1,0 +1,13 @@
+.button-gap-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  position: relative;
+}
+
+.button-gap-slider .gap-label {
+  position: absolute;
+  right: -2rem;
+}

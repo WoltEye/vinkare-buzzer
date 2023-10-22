@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './WinnerScreen.css';
 
-export default function WinnerScreen({ winnerName, setGameWinner, setHideGrid }) {
+export default function WinnerScreen({ winnerName, setGameWinner, setHideGrid, textColor }) {
   
   const handleKeyDown = e => {
     if(e.key === ' ') {
@@ -18,8 +18,8 @@ export default function WinnerScreen({ winnerName, setGameWinner, setHideGrid })
   }, [])
   return (
     <div className='winner-screen'>
-    <h1>{winnerName}</h1>
-    <p>Painoi ensin</p>
+    <h1 style={{color: textColor}}>{winnerName}</h1>
+    <p style={{color: textColor}}>Painoi ensin</p>
     </div>
   )
 }
