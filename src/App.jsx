@@ -38,6 +38,19 @@ export default function App() {
   }, [gameWinner]);
 
   useEffect(() => {
+    if(buttonAmount < buttonNameStatus.length) {
+      setButtonNameStatus(prev => {
+        return prev.filter((_, index) => index !== prev.length - 1);
+      });
+    }
+    if(buttonAmount < kbButtonStatus.length) {
+      setKbButtonStatus(prev => {
+        return prev.filter((_, index) => index !== prev.length - 1);
+      });
+    }
+  }, [buttonAmount])
+
+  useEffect(() => {
     document.body.style.background = bgColor;
   }, [bgColor])
 

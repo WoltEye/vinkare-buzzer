@@ -75,7 +75,9 @@ export default function ButtonGrid({ buttonAmount, onNameChange, gap, gameStarte
           document.addEventListener('keydown', handleKeyDown);
           document.addEventListener('keyup', handleKeyUp);
         }
-      }, [gameWinner])
+      }, [gameWinner]);
+
+
   return (
   <>
     <div 
