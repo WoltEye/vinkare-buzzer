@@ -77,7 +77,6 @@ export default function ButtonGrid({ buttonAmount, onNameChange, gap, gameStarte
         }
       }, [gameWinner]);
 
-
   return (
   <>
     <div 
