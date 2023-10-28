@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonAmountDropdown from './ButtonAmountSlider/ButtonAmountDropdown';
+import ButtonAmountDropdown from './ButtonAmountDropdown/ButtonAmountDropdown';
 import AuthorSizeSlider from './AuthorSizeSlider/AuthorSizeSlider';
 import ButtonSizeSlider from './ButtonSizeSlider/ButtonSizeSlider';
 import ButtonGapSlider from './ButtonGapSlider/ButtonGapSlider';
