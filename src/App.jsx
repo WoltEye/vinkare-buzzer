@@ -22,6 +22,7 @@ export default function App() {
   const [ textColor, setTextColor ] = useState('#f5f5f5');
   const [ volume, setVolume ] = useState(0.1);
   const [ showNotification, setShowNotification ] = useState(false);
+  const [ keyTest, setKeyTest  ] = useState([]);
 
   const playAudio = () => {
     const buzzer = new Audio(BuzzerAudio);
@@ -52,7 +53,7 @@ export default function App() {
 
   useEffect(() => {
     document.body.style.background = bgColor;
-  }, [bgColor])
+  }, [bgColor]);
 
   return ( 
     <>

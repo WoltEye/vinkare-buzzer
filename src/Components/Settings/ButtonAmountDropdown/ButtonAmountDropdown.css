@@ -9,9 +9,36 @@
 #button-amount {
   border-radius: 15px;
   padding: .2rem;
+  width: 2rem;
   border: 2px solid whitesmoke;
   transition: 250ms all;
   font-weight: bold;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.button-amount-dropdown .select-wrapper::after {
+  content: '>';
+  position: absolute;
+  color: inherit;
+  left: 1rem;
+  top: .3rem;
+  user-select: none;
+  touch-action: none;
+  transform: rotate(90deg) scaleX(.7);
+  font-size: .9rem;
+  transition: 250ms all;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.button-amount-dropdown:hover .select-wrapper::after {
+  cursor: pointer;
 }
 
 #button-amount:hover { 
