@@ -14,3 +14,6 @@ In the application you can create up to 8 "buzzer buttons", each button has a na
 
 ## Known issues
 - The website is not responsive on all devices (I dont want to waste my time making a website responsive that is and can only used on a computer)
+
+## Live site
+https://vinkarebuzzer.netlify.app/
