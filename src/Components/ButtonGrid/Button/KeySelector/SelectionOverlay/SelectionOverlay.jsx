@@ -6,10 +6,10 @@ export default function SelectionOverlay({ overlay, changeKey }) {
   const [ closeOverlayTimer, setCloseOverlayTimer ] = useState(5); //In seconds
   
   const onKeyDown = e => {
-    if(e.key === 'Escape') {
+    if(e.code === 'Escape') {
       overlay(false);
     } else {
-      changeKey(e.key);
+      changeKey(e.code.toUpperCase());
       overlay(false);
     }
   }

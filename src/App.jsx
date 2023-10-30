@@ -30,27 +30,6 @@ export default function App() {
   }
 
   useEffect(() => {
-    if(gameWinner) {
-      setTimeout(() => {
-        setHideGrid(true);
-      }, 850)
-    }
-  }, [gameWinner]);
-
-  useEffect(() => {
-    if(buttonAmount < buttonNameStatus.length) {
-      setButtonNameStatus(prev => {
-        return prev.filter((_, index) => index !== prev.length - 1);
-      });
-    }
-    if(buttonAmount < kbButtonStatus.length) {
-      setKbButtonStatus(prev => {
-        return prev.filter((_, index) => index !== prev.length - 1);
-      });
-    }
-  }, [buttonAmount])
-
-  useEffect(() => {
     document.body.style.background = bgColor;
   }, [bgColor]);
 
@@ -90,13 +69,16 @@ export default function App() {
     <ButtonGrid 
     buttonAmount={buttonAmount}
     setButtonNameStatus={setButtonNameStatus}
+    buttonNameStatus={buttonNameStatus}
     gameStarted={gameStarted}
     gameWinner={gameWinner}
     setGameWinner={setGameWinner}
     playAudio={playAudio}
     setKbButtonStatus={setKbButtonStatus}
+    kbButtonStatus={kbButtonStatus}
     buttonSize={buttonSize}
     authorNameSize={authorNameSize}
+    setHideGrid={setHideGrid}
     gap={gap}
     textColor={textColor}
     bgColor={bgColor}

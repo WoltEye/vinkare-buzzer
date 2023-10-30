@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import KeySelector from './KeySelector/KeySelector';
 import './Button.css';
 
-export default function Button({ pressedKey, gameStarted, getSize, bgColor, setGameWinner, gameWinner, playAudio, setButtonNameStatus, setKbButtonStatus, buttonSize, authorNameSize, textColor }) {
+export default function Button({ pressedKeys, gameStarted, getSize, bgColor, setGameWinner, buttonNameStatus, gameWinner, playAudio, setButtonNameStatus, setKbButtonStatus, buttonSize, authorNameSize, textColor, index }) {
   const [ selectedKey, setSelectedKey ] = useState(null);
   const [ buttonAuthor, setButtonAuthor ] = useState('');
   const [ buttonPressed, setButtonPressed ] = useState(false);
@@ -17,25 +17,38 @@ export default function Button({ pressedKey, gameStarted, getSize, bgColor, setG
         return prev.filter((_, i) => i !== prev.length - 1);
       });
       setNameSet(false);
-    } else if(e.target.value.length > 0 && !nameSet) {
-      setButtonNameStatus(prev => [...prev, true]);
-      setNameSet(true);
+    } else if(e.target.value.length > 0) {
+      setButtonNameStatus(prev => {
+        if(prev.includes(e.target.value)) {
+          return prev.filter((_, i) => i !== index);
+        }
+        const newArr = [...prev];
+        newArr[index] = e.target.value;
+        return newArr;
+      });
+      if(buttonNameStatus.includes(buttonAuthor)) {
+        //If duplicate names
+        setNameSet(false);
+      } else {
+        setNameSet(true);
+      }
     }
     if(e.target.value.length <= 25) {
     setButtonAuthor(e.target.value);
     }
   }
+
   useEffect(() => {
-    if(pressedKey === selectedKey && selectedKey !== null && !gameWinner) {
-      if(gameStarted) {
+    if(pressedKeys.includes(selectedKey) && selectedKey !== null && !gameWinner) {
+      if(gameStarted && pressedKeys[0] === selectedKey) {
       setButtonPressed(true);
       }
       playAudio();
     }
-    if(pressedKey === selectedKey && gameStarted && pressedKey !== null && !gameWinner) {
+    if(pressedKeys[0] === selectedKey && gameStarted && !gameWinner) {
       setGameWinner(buttonAuthor);
     }
-  }, [pressedKey])
+  }, [pressedKeys])
 
   useEffect(() => {
     if(!gameWinner && buttonPressed === true) {
@@ -46,15 +59,22 @@ export default function Button({ pressedKey, gameStarted, getSize, bgColor, setG
   useEffect(() => {
     if(selectedKey && !kbSet) {
       setKbSet(true);
-      setKbButtonStatus(prev => [...prev, true]);
-    } else if(!selectedKey && kbSet) {
+      setKbButtonStatus(prev => [...prev, selectedKey]);
+    } else if(selectedKey && kbSet) {
+      setKbButtonStatus(prev => {
+        const newArr = [...prev];
+        newArr[index] = selectedKey;
+        return newArr;
+        //If a button is reassigned
+      })
+    }
+     else if(!selectedKey && kbSet) {
       setKbSet(false);
       setKbButtonStatus(prev => {
         return prev.filter((_, i) => i !== prev.length - 1);
       })
     }
   }, [selectedKey])
-
 
   return (
     <div className={gameStarted ? 'button-container game-started' : 'button-container'}>
@@ -85,7 +105,7 @@ export default function Button({ pressedKey, gameStarted, getSize, bgColor, setG
         style={{height: `${getSize(7, buttonSize)}rem`, width: `${getSize(7, buttonSize)}rem`, boxShadow: `0 ${getSize(0.8, buttonSize)}rem 0 rgb(100,100,100)`}}>
         <div 
         className='button-top'
-        style={buttonPressed || pressedKey === selectedKey && selectedKey !== null ? 
+        style={buttonPressed || pressedKeys.includes(selectedKey) && selectedKey !== null ? 
           {height: `${getSize(5, buttonSize)}rem`, width: `${getSize(5, buttonSize)}rem`, boxShadow: `0 0 0 rgb(130, 0, 0)`, top: `${getSize(0.9, buttonSize)}rem`} :
           {height: `${getSize(5, buttonSize)}rem`, width: `${getSize(5, buttonSize)}rem`, boxShadow: `0 ${getSize(0.8, buttonSize)}rem 0 rgb(130, 0, 0)`, top: `${getSize(0.2, buttonSize)}rem`}}></div>  
         </div>

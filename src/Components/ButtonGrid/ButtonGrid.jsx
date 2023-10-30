@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Button from './Button/Button';
 import './ButtonGrid.css';
 
-export default function ButtonGrid({ buttonAmount, onNameChange, gap, gameStarted, setGameWinner, gameWinner, playAudio, setButtonNameStatus, bgColor, setKbButtonStatus, buttonSize, authorNameSize, textColor }) {
-    const [ pressedKey, setPressedKey ] = useState(null);
+export default function ButtonGrid({ buttonAmount, kbButtonStatus, setHideGrid, buttonNameStatus, onNameChange, gap, gameStarted, setGameWinner, gameWinner, playAudio, setButtonNameStatus, bgColor, setKbButtonStatus, buttonSize, authorNameSize, textColor }) {
+    const [ pressedKeys, setPressedKeys ] = useState([]);
     const [ hideGridItems, setHideGridItems ] = useState(false);
     
     let timeoutId;
 
     const getSize = (num, size) => {
-      const distance = (size - 1 + 1) * num;
+      const distance = size * num;
       return distance;
     }
 
@@ -23,13 +23,14 @@ export default function ButtonGrid({ buttonAmount, onNameChange, gap, gameStarte
         for(let i = 0; i < buttonAmount; i++) {
           buttonArray.push(
           <Button
-          pressedKey={pressedKey} 
+          pressedKeys={pressedKeys} 
           key={`button${i}`}
           index={i}
           onNameChange={onNameChange}
           gameStarted={gameStarted}
           setGameWinner={setGameWinner}
           gameWinner={gameWinner}
+          buttonNameStatus={buttonNameStatus}
           setButtonNameStatus={setButtonNameStatus}
           playAudio={playAudio}
           setKbButtonStatus={setKbButtonStatus}
@@ -46,36 +47,67 @@ export default function ButtonGrid({ buttonAmount, onNameChange, gap, gameStarte
       }
 
       const handleKeyDown = e => {
-        setPressedKey(e.key);
+        setPressedKeys(prev => {
+        if(!prev.includes(e.code.toUpperCase()) && kbButtonStatus.includes(e.code.toUpperCase())) {
+          return [...prev, e.code.toUpperCase()];
+        } else {
+          return prev;
+        }
+        });
       }
 
-      const handleKeyUp = () => {
-        setPressedKey(null);
+      const handleKeyUp = (e) => {
+        setPressedKeys(prev => {
+          if(prev.includes(e.code.toUpperCase())) {
+            return prev.filter(item => item !== e.code.toUpperCase());
+          } else {
+            return prev;
+          }
+        });
       }
+
+      useEffect(() => {
+        if(gameWinner) {
+         timeoutId = setTimeout(() => {
+            setHideGridItems(true);
+            setPressedKeys([])
+          }, 700); 
+        } else {
+          clearTimeout(timeoutId);
+          setHideGridItems(false);
+        }
+      }, [gameWinner]);
 
       useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('keyup', handleKeyUp);
         return () => { 
-        document.removeEventListener('keydown', handleKeyDown); 
-        document.removeEventListener('keyup', handleKeyUp);
-        clearTimeout(timeoutId); 
+          document.removeEventListener('keydown', handleKeyDown); 
+          document.removeEventListener('keyup', handleKeyUp);
         }
-      }, [])
+      }, [kbButtonStatus])
+
+      useEffect(() => {
+        if(buttonAmount < buttonNameStatus.length) {
+          setButtonNameStatus(prev => {
+            return prev.filter((_, index) => index !== prev.length - 1);
+          });
+        }
+        if(buttonAmount < kbButtonStatus.length) {
+          setKbButtonStatus(prev => {
+            return prev.filter((_, index) => index !== prev.length - 1);
+          });
+        }
+      }, [buttonAmount])
+      
       useEffect(() => {
         if(gameWinner) {
-         timeoutId = setTimeout(() => {
-            setHideGridItems(true);
-          }, 700);
-          document.removeEventListener('keydown', handleKeyDown); 
-          document.removeEventListener('keyup', handleKeyUp); 
-        } else {
-          clearTimeout(timeoutId);
-          setHideGridItems(false);
-          document.addEventListener('keydown', handleKeyDown);
-          document.addEventListener('keyup', handleKeyUp);
+          setTimeout(() => {
+            setHideGrid(true);
+          }, 850)
         }
       }, [gameWinner]);
+
 
   return (
   <>

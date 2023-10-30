@@ -10,7 +10,9 @@ export default function NotificationOverlay({ bgColor, textColor, setShowNotific
       style={{color: bgColor, background: textColor}}>
         <div className='notification-box-content-container'>
           <h2>Virhe</h2>
-          <p>Syötä jokaiselle pelaajalle nimi ja näppäin ennen pelin aloittamista</p>
+          <p>Syötä jokaiselle pelaajalle nimi ja näppäin ennen pelin aloittamista. <br/>
+             Tarkista myös että jokaisella pelaajalla on erilainen nimi.
+          </p>
           <button 
           className='ok-button'
           onMouseOver={() => { setHover(true) }}
