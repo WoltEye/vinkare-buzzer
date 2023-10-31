@@ -17,7 +17,7 @@ export default function App() {
   const [ gameWinner, setGameWinner ] = useState(undefined);
   const [ hideGrid, setHideGrid ] = useState(false);
   const [ buttonSize, setButtonSize ] = useState(1);
-  const [ authorNameSize, setAuthorNameSize ] = useState(1);
+  const [ authorNameSize, setAuthorNameSize ] = useState(1.2);
   const [ gap, setGap ] = useState(0.5);
   const [ bgColor, setBgColor ] = useState('#000000');
   const [ textColor, setTextColor ] = useState('#f5f5f5');
