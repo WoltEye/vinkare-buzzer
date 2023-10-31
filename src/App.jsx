@@ -7,6 +7,7 @@ import SettingsButton from './Components/SettingsButton/SettingsButton';
 import Settings from './Components/Settings/Settings.jsx'
 import NotificationOverlay from './Components/NotificationOverlay/NotificationOverlay.jsx';
 import './App.css';
+import NoMobileSupport from './Components/NoMobileSupport/NoMobileSupport.jsx';
 
 export default function App() {
   const [ buttonAmount, setButtonAmount ] = useState(4);
@@ -35,6 +36,7 @@ export default function App() {
 
   return ( 
     <>
+    <NoMobileSupport />
     { showNotification &&
     <NotificationOverlay 
     textColor={textColor}

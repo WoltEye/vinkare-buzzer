@@ -1,0 +1,38 @@
+.no-mobile-support {
+    color: whitesmoke;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  
+  @media only screen and (min-width: 780px) {
+    .no-mobile-support {
+      display: none;
+    }
+  }
+  
+  @media only screen and (max-width: 780px) {
+    .button-layout {
+      display: none;
+    }
+    .no-mobile-support {
+      display: block;
+    }
+  }
+  
+  @media only screen and (max-width: 444px) {
+    .no-mobile-support {
+      font-size: .8rem;
+    }
+  }
+  
+  @media only screen and (max-width: 260px) {
+    .no-mobile-support {
+      font-size: .5rem;
+      font-weight: 400;
+    }
+  }
