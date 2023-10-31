@@ -6,6 +6,7 @@ export default function ButtonGrid({ buttonAmount, kbButtonStatus, setHideGrid, 
     const [ pressedKeys, setPressedKeys ] = useState([]);
     const [ hideGridItems, setHideGridItems ] = useState(false);
     
+    //I dont think this works but Ill keep it so nothing breaks
     let timeoutId;
 
     const getSize = (num, size) => {
