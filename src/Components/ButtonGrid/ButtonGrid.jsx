@@ -48,8 +48,8 @@ export default function ButtonGrid({ buttonAmount, kbButtonStatus, setHideGrid, 
 
       const handleKeyDown = e => {
         setPressedKeys(prev => {
-        if(!prev.includes(e.code.toUpperCase()) && kbButtonStatus.includes(e.code.toUpperCase())) {
-          return [...prev, e.code.toUpperCase()];
+        if(!prev.includes(e.code) && kbButtonStatus.includes(e.code)) {
+          return [...prev, e.code];
         } else {
           return prev;
         }
@@ -58,8 +58,8 @@ export default function ButtonGrid({ buttonAmount, kbButtonStatus, setHideGrid, 
 
       const handleKeyUp = (e) => {
         setPressedKeys(prev => {
-          if(prev.includes(e.code.toUpperCase())) {
-            return prev.filter(item => item !== e.code.toUpperCase());
+          if(prev.includes(e.code)) {
+            return prev.filter(item => item !== e.code);
           } else {
             return prev;
           }

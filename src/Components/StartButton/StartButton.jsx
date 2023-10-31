@@ -4,7 +4,7 @@ import './StartButton.css';
 export default function StartButton({ startGame, bgColor, textColor, setShowNotification, buttonNameStatus, buttonAmount, kbButtonStatus}) {
   const [ hovered, setHovered ] = useState(false);
   const handleStartGame = () => {
-    if(buttonNameStatus.length === buttonAmount && kbButtonStatus.length === buttonAmount) {
+    if(buttonNameStatus.length === buttonAmount && buttonNameStatus.every(item => item ? true : false) && kbButtonStatus.length === buttonAmount) {
       startGame(true);
     } else {
       setShowNotification(true);

@@ -12,29 +12,18 @@ export default function Button({ pressedKeys, gameStarted, getSize, bgColor, set
   const inputWidth = buttonAuthor.length <= 3 && buttonAuthor.length > 0 ? buttonAuthor.length * 1.2 : buttonAuthor ? buttonAuthor.length * 0.7 : 14;
 
   const handleChange = e => {
-    if(e.target.value.length < 1 && nameSet) { 
-      setButtonNameStatus(prev => {
-        return prev.filter((_, i) => i !== prev.length - 1);
-      });
-      setNameSet(false);
-    } else if(e.target.value.length > 0) {
+    if(e.target.value.length <= 25) {
       setButtonNameStatus(prev => {
         if(prev.includes(e.target.value)) {
-          return prev.filter((_, i) => i !== index);
+          const newArr = [...prev];
+          newArr[index] = null;
+          return newArr;
         }
         const newArr = [...prev];
         newArr[index] = e.target.value;
         return newArr;
-      });
-      if(buttonNameStatus.includes(buttonAuthor)) {
-        //If duplicate names
-        setNameSet(false);
-      } else {
-        setNameSet(true);
-      }
-    }
-    if(e.target.value.length <= 25) {
-    setButtonAuthor(e.target.value);
+      })
+      setButtonAuthor(e.target.value);
     }
   }
 
@@ -54,7 +43,8 @@ export default function Button({ pressedKeys, gameStarted, getSize, bgColor, set
     if(!gameWinner && buttonPressed === true) {
       setButtonPressed(false);
     }
-  }, [gameWinner])
+  }, [gameWinner]);
+
 
   useEffect(() => {
     if(selectedKey && !kbSet) {

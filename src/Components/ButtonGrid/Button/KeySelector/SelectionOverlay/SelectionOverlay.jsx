@@ -9,7 +9,7 @@ export default function SelectionOverlay({ overlay, changeKey }) {
     if(e.code === 'Escape') {
       overlay(false);
     } else {
-      changeKey(e.code.toUpperCase());
+      changeKey(e.code);
       overlay(false);
     }
   }
