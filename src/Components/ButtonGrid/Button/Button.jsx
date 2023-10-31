@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import KeySelector from './KeySelector/KeySelector';
 import './Button.css';
 
-export default function Button({ pressedKeys, gameStarted, getSize, bgColor, setGameWinner, buttonNameStatus, gameWinner, playAudio, setButtonNameStatus, setKbButtonStatus, buttonSize, authorNameSize, textColor, index }) {
+export default function Button({ pressedKeys, gameStarted, getSize, bgColor, setGameWinner, gameWinner, playAudio, setButtonNameStatus, setKbButtonStatus, buttonSize, authorNameSize, textColor, index }) {
   const [ selectedKey, setSelectedKey ] = useState(null);
   const [ buttonAuthor, setButtonAuthor ] = useState('');
   const [ buttonPressed, setButtonPressed ] = useState(false);
   const [ kbSet, setKbSet ] = useState(false);
 
-  const inputWidth = buttonAuthor.length <= 3 && buttonAuthor.length > 0 ? buttonAuthor.length * 1.2 : buttonAuthor ? buttonAuthor.length * 0.7 : 14;
+  const inputWidth = buttonAuthor.length <= 3 && buttonAuthor.length > 0 ? buttonAuthor.length * 1.2 : buttonAuthor ? buttonAuthor.length * 0.75 : 8;
 
   const handleChange = e => {
     if(e.target.value.length <= 25) {
@@ -74,7 +74,7 @@ export default function Button({ pressedKeys, gameStarted, getSize, bgColor, set
       name="button-author"
       value={buttonAuthor} 
       onChange={handleChange}
-      placeholder="Syötä nimi pelaajalle"
+      placeholder="Pelaajan Nimi"
       maxLength='25'
       style={{fontSize: `${getSize(1.2, authorNameSize)}rem`, 
       width: `${getSize(inputWidth, authorNameSize)}rem`, color: textColor}} /> :
