@@ -104,7 +104,7 @@ export default function ButtonGrid({ buttonAmount, kbButtonStatus, setHideGrid, 
             });
           } 
         }
-      }, [buttonAmount])
+      }, [buttonAmount]);
 
       useEffect(() => {
         if(gameWinner) {
