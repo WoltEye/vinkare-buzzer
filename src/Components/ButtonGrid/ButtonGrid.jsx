@@ -12,7 +12,7 @@ export default function ButtonGrid({ buttonAmount, kbButtonStatus, setHideGrid, 
       const distance = size * num;
       return distance;
     }
-
+    
     const renderButtons = () => {
         if(buttonAmount < 1) {
           console.error('Unexpected Error: buttonAmount is less than 1');
@@ -88,15 +88,21 @@ export default function ButtonGrid({ buttonAmount, kbButtonStatus, setHideGrid, 
       }, [kbButtonStatus])
 
       useEffect(() => {
-        if(buttonAmount < buttonNameStatus.length) {
-          setButtonNameStatus(prev => {
-            return prev.filter((_, index) => index !== prev.length - 1);
-          });
+        if(buttonNameStatus.length > buttonAmount) {
+          const diffrence = buttonNameStatus.length - buttonAmount;
+          for(let i = buttonNameStatus.length - 1; i > (buttonNameStatus.length - 1) - diffrence; i--) {
+            setButtonNameStatus(prev => {
+              return prev.filter((_, index) => index !== i);
+            });
+          } 
         }
-        if(buttonAmount < kbButtonStatus.length) {
-          setKbButtonStatus(prev => {
-            return prev.filter((_, index) => index !== prev.length - 1);
-          });
+        if(kbButtonStatus.length > buttonAmount) {
+          const diffrence = kbButtonStatus.length - buttonAmount;
+          for(let i = kbButtonStatus.length - 1; i > (kbButtonStatus.length - 1) - diffrence; i--) {
+            setKbButtonStatus(prev => {
+              return prev.filter((_, index) => index !== i);
+            });
+          } 
         }
       }, [buttonAmount])
       
