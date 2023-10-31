@@ -89,23 +89,23 @@ export default function ButtonGrid({ buttonAmount, kbButtonStatus, setHideGrid, 
 
       useEffect(() => {
         if(buttonNameStatus.length > buttonAmount) {
-          const diffrence = buttonNameStatus.length - buttonAmount;
-          for(let i = buttonNameStatus.length - 1; i > (buttonNameStatus.length - 1) - diffrence; i--) {
+          const diffrence = buttonNameStatus.length - 1 - buttonAmount;
+          for(let i = buttonNameStatus.length - 1; i >= buttonNameStatus.length - 1 - diffrence; i--) {
             setButtonNameStatus(prev => {
               return prev.filter((_, index) => index !== i);
             });
           } 
         }
         if(kbButtonStatus.length > buttonAmount) {
-          const diffrence = kbButtonStatus.length - buttonAmount;
-          for(let i = kbButtonStatus.length - 1; i > (kbButtonStatus.length - 1) - diffrence; i--) {
+          const diffrence = kbButtonStatus.length - 1 - buttonAmount;
+          for(let i = kbButtonStatus.length - 1; i >= kbButtonStatus.length - 1 - diffrence; i--) {
             setKbButtonStatus(prev => {
               return prev.filter((_, index) => index !== i);
             });
           } 
         }
       }, [buttonAmount])
-      
+
       useEffect(() => {
         if(gameWinner) {
           setTimeout(() => {
