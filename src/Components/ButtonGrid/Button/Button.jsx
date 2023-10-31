@@ -6,7 +6,6 @@ export default function Button({ pressedKeys, gameStarted, getSize, bgColor, set
   const [ selectedKey, setSelectedKey ] = useState(null);
   const [ buttonAuthor, setButtonAuthor ] = useState('');
   const [ buttonPressed, setButtonPressed ] = useState(false);
-  const [ nameSet, setNameSet ] = useState(false);
   const [ kbSet, setKbSet ] = useState(false);
 
   const inputWidth = buttonAuthor.length <= 3 && buttonAuthor.length > 0 ? buttonAuthor.length * 1.2 : buttonAuthor ? buttonAuthor.length * 0.7 : 14;
