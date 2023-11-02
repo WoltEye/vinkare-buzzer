@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FailedToStart from './FailedToStart/FailedToStart';
 import CookieConsent from './CookieConsent/CookieConsent';
+import NoThemeFound from './NoThemeFound/NoThemeFound'; 
 import './NotificationOverlay.css';
 
 export default function NotificationOverlay({ bgColor, textColor, setShowNotification, type, setCookieConsent }) {
-  const [ hover, setHover ] = useState(false);
   return (
     <div className='notification-overlay'>
       <div 
@@ -16,15 +16,18 @@ export default function NotificationOverlay({ bgColor, textColor, setShowNotific
            <FailedToStart
             bgColor={bgColor}
             textColor={textColor}
-            setShowNotification={setShowNotification}
-            setHover={setHover}
-            hover={hover}/> :
+            setShowNotification={setShowNotification}/> :
            type === 'cookieConsent' ? 
            <CookieConsent
            bgColor={bgColor}
            textColor={textColor}
            setShowNotification={setShowNotification}
            setCookieConsent={setCookieConsent}/> :
+           type === 'noThemeFound' ? 
+           <NoThemeFound
+           textColor={textColor}
+           bgColor={bgColor}
+           setShowNotification={setShowNotification}/> :
            <></> 
            }
         </div>

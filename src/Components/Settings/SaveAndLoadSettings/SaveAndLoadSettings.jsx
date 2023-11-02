@@ -59,7 +59,8 @@ export default function SaveAndLoadSettings({buttonAmount, gap, size, volume, te
     const settingsRaw = localStorage.getItem('settings');
     const settings = settingsRaw ? JSON.parse(settingsRaw) : null;  
      if (!settings) {
-      window.alert('Tallennettuja tietoja ei löytynyt');
+      setNotificationType('noThemeFound');
+      setShowNotification(true);
     } else {
       applySettings(settings);
     }

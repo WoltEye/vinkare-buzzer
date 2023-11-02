@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import './FailedToStart.css';
+import './NoThemeFound.css';
 
-export default function FailedToStart({ setShowNotification, bgColor, textColor }) {
-  const [ hover, setHover ] = useState(false);
-  return (
+export default function NoThemeFound({ setShowNotification, bgColor, textColor }) {
+    const [ hover, setHover ] = useState(false);
+    return (
     <>
     <h2>Virhe</h2>
     <p>
-       Syötä jokaiselle pelaajalle nimi ja näppäin ennen pelin aloittamista. <br/>
-       Tarkista myös että jokaisella pelaajalla on erilainen nimi.
+      Tallenettua teemaa ei löytynyt!
     </p>
     <button 
     className='ok-button'
