@@ -12,6 +12,7 @@
   font-weight: bold;
   border-radius: 5px;
   transition: 250ms all;
+  border: 2px solid whitesmoke;
 }
 
 .save-and-load-settings button:hover {
