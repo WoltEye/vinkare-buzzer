@@ -1,0 +1,23 @@
+.notification-overlay .notification-box .notification-box-content-container button.cookie-consent {
+    width: 5rem;
+    height: 2.5rem;
+    font-weight: bold;
+    border-radius: 15px;
+    transition: 250ms all;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .notification-overlay .notification-box .notification-box-content-container button.cookie-consent:hover {
+    cursor: pointer;
+  }
+
+  .cookie-consent.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }

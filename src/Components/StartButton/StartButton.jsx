@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './StartButton.css';
 
-export default function StartButton({ startGame, bgColor, textColor, setShowNotification, buttonNameStatus, buttonAmount, kbButtonStatus}) {
+export default function StartButton({ startGame, bgColor, textColor, setShowNotification, buttonNameStatus, buttonAmount, kbButtonStatus, setNotificationType}) {
   const [ hovered, setHovered ] = useState(false);
   const handleStartGame = () => {
     if(buttonNameStatus.length === buttonAmount && buttonNameStatus.every(item => item ? true : false) && kbButtonStatus.length === buttonAmount) {
       startGame(true);
     } else {
+      setNotificationType('failedToStart');
       setShowNotification(true);
     }
   }

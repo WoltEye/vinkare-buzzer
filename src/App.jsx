@@ -23,6 +23,9 @@ export default function App() {
   const [ textColor, setTextColor ] = useState('#f5f5f5');
   const [ volume, setVolume ] = useState(0.1);
   const [ showNotification, setShowNotification ] = useState(false);
+  const [ notificationType, setNotificationType ] = useState('failedToStart');
+  const [ cookieConsent, setCookieConsent ] = useState(false);
+  
 
   const playAudio = () => {
     const buzzer = new Audio(BuzzerAudio);
@@ -41,7 +44,9 @@ export default function App() {
     <NotificationOverlay 
     textColor={textColor}
     bgColor={bgColor}
-    setShowNotification={setShowNotification}/>
+    setShowNotification={setShowNotification}
+    type={notificationType}
+    setCookieConsent={setCookieConsent}/>
     }
     { gameStarted &&
       <SettingsButton 
@@ -66,7 +71,10 @@ export default function App() {
        setTextColor={setTextColor}
        volume={volume}
        setVolume={setVolume}
-       playAudio={playAudio}/>
+       playAudio={playAudio}
+       setNotificationType={setNotificationType}
+       setShowNotification={setShowNotification}
+       cookieConsent={cookieConsent}/>
     }
     <ButtonGrid 
     buttonAmount={buttonAmount}
@@ -93,7 +101,8 @@ export default function App() {
     buttonAmount={buttonAmount}
     textColor={textColor}
     bgColor={bgColor}
-    setShowNotification={setShowNotification}/>
+    setShowNotification={setShowNotification}
+    setNotificationType={setNotificationType}/>
     }
     </section>
     { hideGrid &&

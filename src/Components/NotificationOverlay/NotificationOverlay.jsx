@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import FailedToStart from './FailedToStart/FailedToStart';
+import CookieConsent from './CookieConsent/CookieConsent';
 import './NotificationOverlay.css';
 
-export default function NotificationOverlay({ bgColor, textColor, setShowNotification }) {
+export default function NotificationOverlay({ bgColor, textColor, setShowNotification, type, setCookieConsent }) {
   const [ hover, setHover ] = useState(false);
   return (
     <div className='notification-overlay'>
@@ -9,19 +11,22 @@ export default function NotificationOverlay({ bgColor, textColor, setShowNotific
       className='notification-box'
       style={{color: bgColor, background: textColor}}>
         <div className='notification-box-content-container'>
-          <h2>Virhe</h2>
-          <p>Syötä jokaiselle pelaajalle nimi ja näppäin ennen pelin aloittamista. <br/>
-             Tarkista myös että jokaisella pelaajalla on erilainen nimi.
-          </p>
-          <button 
-          className='ok-button'
-          onMouseOver={() => { setHover(true) }}
-          onMouseOut={() => { setHover(false) }}
-          onClick={() => { setShowNotification(false) }}
-          style={hover ? {color: textColor, background: bgColor, border: `2px solid ${bgColor}`} 
-                : {color: bgColor, background: textColor, border: `2px solid ${bgColor}`} }>
-                OK
-         </button>
+         {
+           type === 'failedToStart' ? 
+           <FailedToStart
+            bgColor={bgColor}
+            textColor={textColor}
+            setShowNotification={setShowNotification}
+            setHover={setHover}
+            hover={hover}/> :
+           type === 'cookieConsent' ? 
+           <CookieConsent
+           bgColor={bgColor}
+           textColor={textColor}
+           setShowNotification={setShowNotification}
+           setCookieConsent={setCookieConsent}/> :
+           <></> 
+           }
         </div>
     </div>
     </div>

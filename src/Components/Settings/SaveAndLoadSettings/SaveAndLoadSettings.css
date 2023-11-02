@@ -1,0 +1,19 @@
+.save-and-load-settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.save-and-load-settings button {
+  width: 13rem;
+  height: 2.5rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 250ms all;
+}
+
+.save-and-load-settings button:hover {
+  cursor: pointer;
+}

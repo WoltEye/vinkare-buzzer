@@ -1,0 +1,11 @@
+.notification-overlay .notification-box .notification-box-content-container button {
+    width: 3rem;
+    height: 2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    transition: 250ms all;
+  }
+  
+  .notification-overlay .notification-box .notification-box-content-container button:hover {
+    cursor: pointer;
+  }
